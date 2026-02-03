@@ -6,41 +6,48 @@
   <meta name="description" content="Personal website landing page." />
   <title>Your Name • Personal Website</title>
 
-  <!-- Social preview (optional) -->
-  <meta property="og:title" content="Your Name • Personal Website" />
-  <meta property="og:description" content="A clean, modern one-page landing page hosted on GitHub Pages." />
-  <meta property="og:type" content="website" />
-
   <style>
     :root{
-      --bg: #0b0d12;
+      /* UVU palette (official) */
+      --uvu-green: #275D38;   /* Primary UVU Green (Pantone 7483) */
+      --uvu-green-2: #00843D; /* Supporting green */
+      --uvu-green-3: #4BA23F; /* Supporting green */
+      --uvu-lime: #78BE1F;    /* Accent lime */
+      --uvu-black: #000000;
+      --uvu-white: #FFFFFF;
+
+      /* UI tokens */
+      --bg: #07110B;
       --panel: rgba(255,255,255,.06);
       --panel2: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.55);
-      --border: rgba(255,255,255,.10);
-      --shadow: 0 20px 70px rgba(0,0,0,.50);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.56);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 20px 70px rgba(0,0,0,.55);
       --radius: 18px;
       --radius2: 26px;
       --max: 1120px;
-      --accent: #7c5cff;
-      --accent2:#19d3ff;
-      --good: #45d483;
-      --warn: #ffcc66;
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
 
     @media (prefers-color-scheme: light){
       :root{
-        --bg: #f6f7fb;
+        --bg: #f6faf7;
         --panel: rgba(0,0,0,.04);
         --panel2: rgba(0,0,0,.06);
         --text: rgba(0,0,0,.90);
-        --muted: rgba(0,0,0,.64);
-        --muted2: rgba(0,0,0,.50);
+        --muted: rgba(0,0,0,.66);
+        --muted2: rgba(0,0,0,.52);
         --border: rgba(0,0,0,.10);
-        --shadow: 0 20px 70px rgba(0,0,0,.12);
+        --shadow: 0 18px 60px rgba(0,0,0,.12);
+      }
+      body{
+        background:
+          radial-gradient(1100px 650px at 10% 0%, rgba(39,93,56,.18), transparent 58%),
+          radial-gradient(1100px 650px at 90% 10%, rgba(0,132,61,.16), transparent 58%),
+          radial-gradient(900px 520px at 50% 100%, rgba(120,190,31,.14), transparent 60%),
+          var(--bg);
       }
     }
 
@@ -51,15 +58,18 @@
       font-family: var(--font);
       color: var(--text);
       background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(124,92,255,.35), transparent 60%),
-        radial-gradient(1000px 600px at 85% 5%, rgba(25,211,255,.22), transparent 55%),
-        radial-gradient(900px 600px at 50% 95%, rgba(69,212,131,.14), transparent 55%),
+        radial-gradient(1200px 700px at 12% 5%, rgba(39,93,56,.50), transparent 60%),
+        radial-gradient(1000px 600px at 88% 10%, rgba(0,132,61,.24), transparent 58%),
+        radial-gradient(900px 600px at 50% 95%, rgba(120,190,31,.18), transparent 62%),
         var(--bg);
       min-height: 100vh;
       line-height: 1.5;
     }
+
     a{ color: inherit; text-decoration: none; }
     a:hover{ text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
     .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 18px 70px; }
 
     /* Top nav */
@@ -68,7 +78,7 @@
       gap: 14px;
       padding: 14px 16px;
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
       border-radius: 999px;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -77,18 +87,18 @@
     }
     .brand{
       display:flex; align-items:center; gap: 10px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .2px;
     }
-    .dot{
+    .mark{
       width: 12px; height: 12px; border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(124,92,255,.12);
+      background: linear-gradient(135deg, var(--uvu-green), var(--uvu-lime));
+      box-shadow: 0 0 0 6px rgba(39,93,56,.20);
     }
     .links{
       display:flex; align-items:center; gap: 14px; flex-wrap: wrap;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
     }
     .links a{ padding: 8px 10px; border-radius: 999px; }
@@ -96,6 +106,7 @@
       background: rgba(255,255,255,.08);
       text-decoration: none;
     }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap: 10px;
@@ -103,21 +114,23 @@
       border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,.06);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
       color: var(--text);
       text-decoration: none !important;
-      transition: transform .12s ease, background .12s ease;
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
       white-space: nowrap;
     }
     .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
     .btn.primary{
       border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #0a0b0f;
+      color: #06120b;
+      background: linear-gradient(135deg, var(--uvu-green-2), var(--uvu-lime));
+      box-shadow: 0 14px 28px rgba(0,0,0,.18);
     }
+    .btn.primary:hover{ box-shadow: 0 16px 34px rgba(0,0,0,.22); }
 
-    /* Hero */
+    /* Layout */
     .hero{
       margin-top: 26px;
       display:grid;
@@ -127,20 +140,21 @@
     }
     @media (max-width: 920px){
       .hero{ grid-template-columns: 1fr; }
-      .nav{ position: sticky; top: 10px; }
+      .nav{ top: 10px; }
     }
     .card{
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
     .heroMain{
       padding: 26px 22px;
-      position: relative;
       min-height: 340px;
+      position: relative;
     }
+
     .badgeRow{ display:flex; gap: 10px; flex-wrap: wrap; align-items:center; }
     .badge{
       display:inline-flex; gap: 8px; align-items:center;
@@ -149,13 +163,15 @@
       border-radius: 999px;
       background: rgba(255,255,255,.06);
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 12px;
     }
     .badge .pill{
       width: 8px; height: 8px; border-radius: 999px;
-      background: var(--good);
+      background: var(--uvu-lime);
+      box-shadow: 0 0 0 5px rgba(120,190,31,.14);
     }
+
     h1{
       margin: 14px 0 10px;
       font-size: clamp(32px, 4.3vw, 52px);
@@ -175,16 +191,12 @@
       gap: 16px;
       flex-wrap: wrap;
       color: var(--muted2);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 13px;
     }
 
     /* Right hero visual */
-    .heroSide{
-      display:flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .heroSide{ display:flex; flex-direction: column; gap: 14px; }
     .photo{
       position: relative;
       min-height: 240px;
@@ -197,14 +209,15 @@
       width:100%; height:100%;
       object-fit: cover;
       display:block;
-      filter: saturate(1.05) contrast(1.05);
+      filter: saturate(1.06) contrast(1.06);
       transform: scale(1.01);
     }
     .photoOverlay{
       position:absolute; inset:0;
       background:
-        radial-gradient(600px 220px at 25% 25%, rgba(124,92,255,.32), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.38));
+        radial-gradient(650px 240px at 25% 25%, rgba(39,93,56,.40), transparent 58%),
+        radial-gradient(650px 240px at 80% 30%, rgba(120,190,31,.18), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.44));
       pointer-events:none;
     }
     .mini{
@@ -233,6 +246,7 @@
       color: var(--muted);
       font-size: 14px;
     }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -245,9 +259,7 @@
     @media (max-width: 920px){
       .col6, .col7, .col5{ grid-column: span 12; }
     }
-    .proj{
-      padding: 0;
-    }
+
     .projMedia{
       aspect-ratio: 16/9;
       width: 100%;
@@ -255,23 +267,11 @@
       background: rgba(255,255,255,.05);
       border-bottom: 1px solid var(--border);
     }
-    .projMedia img{
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display:block;
-    }
-    .projBody{
-      padding: 16px 16px 18px;
-    }
-    .projTitle{
-      display:flex; align-items:center; justify-content: space-between;
-      gap: 10px; flex-wrap: wrap;
-    }
-    .projTitle h3{
-      margin: 0;
-      font-size: 16px;
-      letter-spacing: .2px;
-    }
+    .projMedia img{ width: 100%; height: 100%; object-fit: cover; display:block; }
+    .projBody{ padding: 16px 16px 18px; }
+    .projTitle{ display:flex; align-items:center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .projTitle h3{ margin: 0; font-size: 16px; letter-spacing: .2px; }
+
     .tag{
       display:inline-flex;
       padding: 6px 10px;
@@ -280,28 +280,22 @@
       background: rgba(255,255,255,.06);
       color: var(--muted);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       white-space: nowrap;
     }
-    .projBody p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14px;
+    .tag.accent{
+      border-color: rgba(120,190,31,.35);
+      background: rgba(120,190,31,.12);
+      color: rgba(255,255,255,.86);
     }
-    .split{
-      padding: 18px;
-    }
-    .list{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style: none;
-      display:grid;
-      gap: 10px;
-    }
+
+    .projBody p{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+
+    .split{ padding: 18px; }
+
+    .list{ margin: 10px 0 0; padding: 0; list-style: none; display:grid; gap: 10px; }
     .li{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
+      display:flex; gap: 10px; align-items:flex-start;
       padding: 10px 10px;
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -310,7 +304,7 @@
     .icon{
       width: 28px; height: 28px;
       border-radius: 10px;
-      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(25,211,255,.18));
+      background: linear-gradient(135deg, rgba(0,132,61,.26), rgba(120,190,31,.16));
       border: 1px solid var(--border);
       display:flex; align-items:center; justify-content:center;
       flex: 0 0 auto;
@@ -319,7 +313,6 @@
     .li b{ display:block; font-size: 14px; }
     .li span{ display:block; color: var(--muted); font-size: 13px; margin-top: 2px; }
 
-    /* Footer */
     footer{
       margin-top: 26px;
       padding: 18px 12px 0;
@@ -332,10 +325,6 @@
       align-items: center;
     }
     .smallLinks{ display:flex; gap: 12px; flex-wrap: wrap; }
-    .srOnly{
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
-      clip:rect(0,0,0,0); white-space:nowrap; border:0;
-    }
   </style>
 </head>
 
@@ -343,7 +332,7 @@
   <div class="wrap">
     <header class="nav" aria-label="Primary navigation">
       <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
+        <span class="mark" aria-hidden="true"></span>
         <span>Your Name</span>
       </div>
 
@@ -353,9 +342,7 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="btn primary" href="#contact" title="Jump to contact">
-        Let’s connect →
-      </a>
+      <a class="btn primary" href="#contact" title="Jump to contact">Let’s connect →</a>
     </header>
 
     <main>
@@ -368,12 +355,11 @@
 
           <h1>Clean work. Clear thinking. Real results.</h1>
           <p class="subtitle">
-            I’m <b>Your Name</b> — a detail-oriented builder who enjoys turning messy problems into simple, useful outcomes.
-            This page is a one-file GitHub Pages landing page showcasing assets already in this repo.
+            I’m <b>Your Name</b> — a detail-oriented builder who likes turning messy problems into simple, useful outcomes.
+            This is a one-file landing page styled with a UVU-inspired green palette.
           </p>
 
           <div class="ctaRow">
-            <!-- Replace the # links with your real links -->
             <a class="btn primary" href="#work">See featured work</a>
             <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
             <a class="btn" href="mailto:you@example.com">Email me</a>
@@ -388,7 +374,6 @@
 
         <aside class="heroSide" aria-label="Highlights">
           <div class="photo card" role="img" aria-label="Feature image from repository">
-            <!-- image.png in your repo -->
             <img src="image.png" alt="Feature image (image.png)" />
             <div class="photoOverlay" aria-hidden="true"></div>
           </div>
@@ -396,7 +381,7 @@
           <div class="mini">
             <h3>What’s on this page</h3>
             <p>
-              A modern hero, featured work cards, an about section, and a contact section — styled with pure HTML/CSS.
+              A modern hero, featured work cards, an about section, and a contact section — pure HTML/CSS.
               No frameworks, no build step.
             </p>
           </div>
@@ -406,13 +391,13 @@
       <section id="work" aria-label="Featured work">
         <div class="sectionHead">
           <h2>Featured</h2>
-          <p>Powered by the images already in your repo.</p>
+          <p>Using the two images already in your repo.</p>
         </div>
 
         <div class="grid">
-          <article class="card proj col7">
+          <article class="card col7">
             <div class="projMedia">
-              <!-- NOTE: filename contains spaces; URL-encoded here -->
+              <!-- filename contains spaces; URL-encoded -->
               <img
                 src="Screenshot%202026-01-28%20194011.png"
                 alt="Repository screenshot (Screenshot 2026-01-28 194011.png)"
@@ -421,14 +406,14 @@
             <div class="projBody">
               <div class="projTitle">
                 <h3>Website Demo Repo</h3>
-                <span class="tag">GitHub Pages-ready</span>
+                <span class="tag accent">GitHub Pages-ready</span>
               </div>
               <p>
-                This card uses your repo screenshot to show progress and context. You can swap this text for a real project
-                description, add outcomes, and link to a live demo.
+                This card uses your repo screenshot to show progress and context. Swap this text for a real project summary,
+                outcomes, and links to a live site.
               </p>
-              <p style="margin-top:12px;">
-                <a class="btn" href="#" target="_blank" rel="noreferrer">Live site</a>
+              <p style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+                <a class="btn primary" href="#" target="_blank" rel="noreferrer">Live site</a>
                 <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
               </p>
             </div>
@@ -445,7 +430,7 @@
                 <div class="icon" aria-hidden="true">✓</div>
                 <div>
                   <b>Single file</b>
-                  <span>Everything lives in <code>index.html</code> so Pages works immediately.</span>
+                  <span>Everything lives in <code>index.html</code>.</span>
                 </div>
               </li>
               <li class="li">
@@ -458,15 +443,15 @@
               <li class="li">
                 <div class="icon" aria-hidden="true">🎨</div>
                 <div>
-                  <b>Clean design</b>
-                  <span>Soft gradient background, glass panels, and readable typography.</span>
+                  <b>UVU color scheme</b>
+                  <span>Primary green + lime accent for buttons and highlights.</span>
                 </div>
               </li>
               <li class="li">
                 <div class="icon" aria-hidden="true">🧩</div>
                 <div>
                   <b>Easy to expand</b>
-                  <span>Add more cards, links, or sections without changing any tooling.</span>
+                  <span>Add more project cards with the same structure.</span>
                 </div>
               </li>
             </ul>
@@ -490,8 +475,8 @@
 
             <h3 style="margin:16px 0 8px; font-size:16px;">What I’m building</h3>
             <p style="margin:0; color:var(--muted); font-size:14px;">
-              A personal site that’s easy to maintain. This template is a strong starting point: clean visuals, quick edits,
-              and it hosts nicely on GitHub Pages.
+              A personal site that’s easy to maintain. This template is a strong starting point: clean visuals,
+              quick edits, and it hosts nicely on GitHub Pages.
             </p>
           </div>
 
@@ -524,7 +509,7 @@
               <h3 style="margin:0 0 8px; font-size:16px;">Let’s talk</h3>
               <p style="margin:0; color:var(--muted); font-size:14px;">
                 If you want to connect about work, projects, or collaboration, email is best.
-                You can also add your LinkedIn and a resume link below.
+                Add your LinkedIn and resume links below.
               </p>
             </div>
             <div class="col5" style="display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end;">
@@ -537,7 +522,7 @@
       </section>
 
       <footer>
-        <div>© <span id="y"></span> Your Name • Built as a single-file GitHub Pages site</div>
+        <div>© <span id="y"></span> Your Name • Single-file site</div>
         <div class="smallLinks">
           <a href="#work">Top</a>
           <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
@@ -547,14 +532,11 @@
   </div>
 
   <script>
-    // Set footer year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Optional: smooth-scroll offset for sticky nav (basic)
-    // If you add anchor links elsewhere, this keeps sections from hiding behind the sticky bar.
+    // Smooth-scroll offset for sticky nav
     const navHeight = document.querySelector(".nav")?.offsetHeight || 0;
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(a => {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const id = a.getAttribute("href");
         if (!id || id === "#") return;
