@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal website landing page." />
+  <title>Your Name • Personal Website</title>
+
+  <!-- Social preview (optional) -->
+  <meta property="og:title" content="Your Name • Personal Website" />
+  <meta property="og:description" content="A clean, modern one-page landing page hosted on GitHub Pages." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 20px 70px rgba(0,0,0,.50);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --accent: #7c5cff;
+      --accent2:#19d3ff;
+      --good: #45d483;
+      --warn: #ffcc66;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f6f7fb;
+        --panel: rgba(0,0,0,.04);
+        --panel2: rgba(0,0,0,.06);
+        --text: rgba(0,0,0,.90);
+        --muted: rgba(0,0,0,.64);
+        --muted2: rgba(0,0,0,.50);
+        --border: rgba(0,0,0,.10);
+        --shadow: 0 20px 70px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(1000px 600px at 85% 5%, rgba(25,211,255,.22), transparent 55%),
+        radial-gradient(900px 600px at 50% 95%, rgba(69,212,131,.14), transparent 55%),
+        var(--bg);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 18px 70px; }
+
+    /* Top nav */
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: 999px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      position: sticky; top: 14px; z-index: 10;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .dot{
+      width: 12px; height: 12px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(124,92,255,.12);
+    }
+    .links{
+      display:flex; align-items:center; gap: 14px; flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .links a{ padding: 8px 10px; border-radius: 999px; }
+    .links a:hover{
+      background: rgba(255,255,255,.08);
+      text-decoration: none;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none !important;
+      transition: transform .12s ease, background .12s ease;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #0a0b0f;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 26px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+      .nav{ position: sticky; top: 10px; }
+    }
+    .card{
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .heroMain{
+      padding: 26px 22px;
+      position: relative;
+      min-height: 340px;
+    }
+    .badgeRow{ display:flex; gap: 10px; flex-wrap: wrap; align-items:center; }
+    .badge{
+      display:inline-flex; gap: 8px; align-items:center;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .badge .pill{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--good);
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(32px, 4.3vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    .subtitle{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+    .ctaRow{ display:flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .metaRow{
+      margin-top: 16px;
+      display:flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted2);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Right hero visual */
+    .heroSide{
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .photo{
+      position: relative;
+      min-height: 240px;
+      border-radius: var(--radius2);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+    }
+    .photo img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.01);
+    }
+    .photoOverlay{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px 220px at 25% 25%, rgba(124,92,255,.32), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.38));
+      pointer-events:none;
+    }
+    .mini{
+      padding: 16px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+    }
+    .mini h3{ margin: 0 0 6px; font-size: 14px; letter-spacing: .2px; }
+    .mini p{ margin: 0; color: var(--muted); font-size: 13px; }
+
+    /* Sections */
+    section{ margin-top: 26px; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .sectionHead h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .sectionHead p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .col6{ grid-column: span 6; }
+    .col7{ grid-column: span 7; }
+    .col5{ grid-column: span 5; }
+    .col12{ grid-column: span 12; }
+    @media (max-width: 920px){
+      .col6, .col7, .col5{ grid-column: span 12; }
+    }
+    .proj{
+      padding: 0;
+    }
+    .projMedia{
+      aspect-ratio: 16/9;
+      width: 100%;
+      overflow:hidden;
+      background: rgba(255,255,255,.05);
+      border-bottom: 1px solid var(--border);
+    }
+    .projMedia img{
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    .projBody{
+      padding: 16px 16px 18px;
+    }
+    .projTitle{
+      display:flex; align-items:center; justify-content: space-between;
+      gap: 10px; flex-wrap: wrap;
+    }
+    .projTitle h3{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: .2px;
+    }
+    .tag{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .projBody p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .split{
+      padding: 18px;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 10px 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+    }
+    .icon{
+      width: 28px; height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(25,211,255,.18));
+      border: 1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+      font-weight: 900;
+    }
+    .li b{ display:block; font-size: 14px; }
+    .li span{ display:block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+    /* Footer */
+    footer{
+      margin-top: 26px;
+      padding: 18px 12px 0;
+      color: var(--muted2);
+      font-size: 13px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .smallLinks{ display:flex; gap: 12px; flex-wrap: wrap; }
+    .srOnly{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav" aria-label="Primary navigation">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Your Name</span>
+      </div>
+
+      <nav class="links" aria-label="Site">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn primary" href="#contact" title="Jump to contact">
+        Let’s connect →
+      </a>
+    </header>
+
+    <main>
+      <div class="hero">
+        <section class="card heroMain" aria-label="Hero">
+          <div class="badgeRow">
+            <span class="badge"><span class="pill" aria-hidden="true"></span> Open to opportunities</span>
+            <span class="badge">Accounting • Analytics • Mountains</span>
+          </div>
+
+          <h1>Clean work. Clear thinking. Real results.</h1>
+          <p class="subtitle">
+            I’m <b>Your Name</b> — a detail-oriented builder who enjoys turning messy problems into simple, useful outcomes.
+            This page is a one-file GitHub Pages landing page showcasing assets already in this repo.
+          </p>
+
+          <div class="ctaRow">
+            <!-- Replace the # links with your real links -->
+            <a class="btn primary" href="#work">See featured work</a>
+            <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="mailto:you@example.com">Email me</a>
+          </div>
+
+          <div class="metaRow">
+            <span>📍 Based in: Your City</span>
+            <span>💡 Interests: running, gym, finance/accounting</span>
+            <span>🏔️ Outside: trails + fresh air</span>
+          </div>
+        </section>
+
+        <aside class="heroSide" aria-label="Highlights">
+          <div class="photo card" role="img" aria-label="Feature image from repository">
+            <!-- image.png in your repo -->
+            <img src="image.png" alt="Feature image (image.png)" />
+            <div class="photoOverlay" aria-hidden="true"></div>
+          </div>
+
+          <div class="mini">
+            <h3>What’s on this page</h3>
+            <p>
+              A modern hero, featured work cards, an about section, and a contact section — styled with pure HTML/CSS.
+              No frameworks, no build step.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <section id="work" aria-label="Featured work">
+        <div class="sectionHead">
+          <h2>Featured</h2>
+          <p>Powered by the images already in your repo.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card proj col7">
+            <div class="projMedia">
+              <!-- NOTE: filename contains spaces; URL-encoded here -->
+              <img
+                src="Screenshot%202026-01-28%20194011.png"
+                alt="Repository screenshot (Screenshot 2026-01-28 194011.png)"
+              />
+            </div>
+            <div class="projBody">
+              <div class="projTitle">
+                <h3>Website Demo Repo</h3>
+                <span class="tag">GitHub Pages-ready</span>
+              </div>
+              <p>
+                This card uses your repo screenshot to show progress and context. You can swap this text for a real project
+                description, add outcomes, and link to a live demo.
+              </p>
+              <p style="margin-top:12px;">
+                <a class="btn" href="#" target="_blank" rel="noreferrer">Live site</a>
+                <a class="btn" href="#" target="_blank" rel="noreferrer">Repo</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card split col5">
+            <div class="sectionHead" style="margin-bottom: 6px;">
+              <h2 style="font-size:16px; margin:0;">Quick highlights</h2>
+              <p style="font-size:13px; margin:0;">Editable sections</p>
+            </div>
+
+            <ul class="list" aria-label="Highlights list">
+              <li class="li">
+                <div class="icon" aria-hidden="true">✓</div>
+                <div>
+                  <b>Single file</b>
+                  <span>Everything lives in <code>index.html</code> so Pages works immediately.</span>
+                </div>
+              </li>
+              <li class="li">
+                <div class="icon" aria-hidden="true">⚡</div>
+                <div>
+                  <b>Fast + responsive</b>
+                  <span>Modern layout that adapts nicely to mobile.</span>
+                </div>
+              </li>
+              <li class="li">
+                <div class="icon" aria-hidden="true">🎨</div>
+                <div>
+                  <b>Clean design</b>
+                  <span>Soft gradient background, glass panels, and readable typography.</span>
+                </div>
+              </li>
+              <li class="li">
+                <div class="icon" aria-hidden="true">🧩</div>
+                <div>
+                  <b>Easy to expand</b>
+                  <span>Add more cards, links, or sections without changing any tooling.</span>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" aria-label="About">
+        <div class="sectionHead">
+          <h2>About</h2>
+          <p>A short, skimmable story.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card split col6">
+            <h3 style="margin:0 0 8px; font-size:16px;">Who I am</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">
+              I like work that rewards clarity and care — from financial analysis to process improvement.
+              I’m happiest when I can organize information, spot patterns, and communicate decisions simply.
+            </p>
+
+            <h3 style="margin:16px 0 8px; font-size:16px;">What I’m building</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">
+              A personal site that’s easy to maintain. This template is a strong starting point: clean visuals, quick edits,
+              and it hosts nicely on GitHub Pages.
+            </p>
+          </div>
+
+          <div class="card split col6">
+            <h3 style="margin:0 0 8px; font-size:16px;">A few things I value</h3>
+            <ul style="margin:0; padding-left: 18px; color:var(--muted); font-size:14px;">
+              <li>Accuracy over guesswork</li>
+              <li>Simple systems that scale</li>
+              <li>Clear writing and clean deliverables</li>
+              <li>Healthy routines: running + gym</li>
+              <li>Time outside: mountains and trails</li>
+            </ul>
+
+            <div style="margin-top:14px; border-top:1px solid var(--border); padding-top:14px; color:var(--muted2); font-size:13px;">
+              Tip: update the nav buttons and the “GitHub / Email” links to your real info.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-label="Contact">
+        <div class="sectionHead">
+          <h2>Contact</h2>
+          <p>Fast ways to reach me.</p>
+        </div>
+
+        <div class="card split">
+          <div class="grid" style="align-items:center;">
+            <div class="col7">
+              <h3 style="margin:0 0 8px; font-size:16px;">Let’s talk</h3>
+              <p style="margin:0; color:var(--muted); font-size:14px;">
+                If you want to connect about work, projects, or collaboration, email is best.
+                You can also add your LinkedIn and a resume link below.
+              </p>
+            </div>
+            <div class="col5" style="display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end;">
+              <a class="btn primary" href="mailto:you@example.com">Email me</a>
+              <a class="btn" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>© <span id="y"></span> Your Name • Built as a single-file GitHub Pages site</div>
+        <div class="smallLinks">
+          <a href="#work">Top</a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Set footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Optional: smooth-scroll offset for sticky nav (basic)
+    // If you add anchor links elsewhere, this keeps sections from hiding behind the sticky bar.
+    const navHeight = document.querySelector(".nav")?.offsetHeight || 0;
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 14;
+        window.scrollTo({ top, behavior: "smooth" });
+        history.pushState(null, "", id);
+      });
+    });
+  </script>
+</body>
+</html>
